@@ -1,0 +1,66 @@
+/* Inline theme CSS to avoid CORB / cross-origin stylesheet blocking.
+   This file is loaded as same-origin, so CodeMirror themes can apply reliably.
+
+   Note: if you later add more themes, append them here.
+*/
+
+/* --- One Dark (subset / approximation) --- */
+.CodeMirror.cm-s-one-dark.CodeMirror,
+.CodeMirror.cm-s-one-dark .CodeMirror-gutters,
+.CodeMirror.cm-s-one-dark {
+  background: #282c34;
+  color: #abb2bf;
+}
+.CodeMirror.cm-s-one-dark .CodeMirror-gutters{
+  background: #282c34;
+  border-right: 1px solid #3b4048;
+}
+.CodeMirror.cm-s-one-dark .CodeMirror-linenumber{
+  color: #5c6370;
+}
+.CodeMirror.cm-s-one-dark .CodeMirror-cursor{border-left: 2px solid #528bff;}
+.CodeMirror.cm-s-one-dark .CodeMirror-selected,
+.CodeMirror.cm-s-one-dark.CodeMirror-focused .CodeMirror-selected{
+  background: #3e4452;
+}
+.CodeMirror.cm-s-one-dark .CodeMirror-activeline-background{background:#2c313c;}
+.CodeMirror.cm-s-one-dark .CodeMirror-matchingbracket{color:#e5c07b !important; border-bottom: 1px solid #e5c07b;}
+/* Token colors (basic mapping) */
+.CodeMirror.cm-s-one-dark .cm-keyword{color:#c678dd;}
+.CodeMirror.cm-s-one-dark .cm-atom{color:#e06c75;}
+.CodeMirror.cm-s-one-dark .cm-number{color:#d19a66;}
+.CodeMirror.cm-s-one-dark .cm-def{color:#61afef;}
+.CodeMirror.cm-s-one-dark .cm-variable{color:#e6c07b;}
+.CodeMirror.cm-s-one-dark .cm-string{color:#98c379;}
+.CodeMirror.cm-s-one-dark .cm-comment{color:#5c6370; font-style: italic;}
+.CodeMirror.cm-s-one-dark .cm-tag{color:#e06c75;}
+.CodeMirror.cm-s-one-dark .cm-attribute{color:#e5c07b;}
+.CodeMirror.cm-s-one-dark .cm-builtin{color:#e5c07b;}
+.CodeMirror.cm-s-one-dark .cm-property{color:#d19a66;}
+.CodeMirror.cm-s-one-dark .cm-operator{color:#56b6c2;}
+.CodeMirror.cm-s-one-dark .cm-error{color:#e86666;}
+
+/* --- Dracula (subset / approximation) --- */
+.CodeMirror.cm-s-dracula.CodeMirror,
+.CodeMirror.cm-s-dracula .CodeMirror-gutters,
+.CodeMirror.cm-s-dracula {
+  background: #282a36;
+  color: #f8f8f2;
+}
+.CodeMirror.cm-s-dracula .CodeMirror-gutters{
+  background: #282a36;
+  border-right: 1px solid #343746;
+}
+.CodeMirror.cm-s-dracula .CodeMirror-linenumber{color:#63666e;}
+.CodeMirror.cm-s-dracula .CodeMirror-cursor{border-left: 2px solid #ff79c6;}
+.CodeMirror.cm-s-dracula .CodeMirror-selected,
+.CodeMirror.cm-s-dracula.CodeMirror-focused .CodeMirror-selected{background:#44475a;}
+.CodeMirror.cm-s-dracula .CodeMirror-activeline-background{background:#343746;}
+.CodeMirror.cm-s-dracula .cm-keyword{color:#ff79c6;}
+.CodeMirror.cm-s-dracula .cm-string{color:#f1fa8c;}
+.CodeMirror.cm-s-dracula .cm-number{color:#bd93f9;}
+.CodeMirror.cm-s-dracula .cm-comment{color:#6272a4; font-style: italic;}
+.CodeMirror.cm-s-dracula .cm-def{color:#50fa7b;}
+.CodeMirror.cm-s-dracula .cm-operator{color:#ff79c6;}
+.CodeMirror.cm-s-dracula .cm-error{color:#ff5555;}
+

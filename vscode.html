@@ -1876,7 +1876,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/go/go.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/ruby/ruby.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/rust/rust.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/php/php.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/lint/lint.min.js"></script>
@@ -1897,6 +1897,9 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/csslint/1.0.5/csslint.min.js"
       onerror="window.CSSLint = null"
     ></script>
+    <!-- Inline same-origin themes to avoid CORB blocking cross-origin theme CSS -->
+    <link rel="stylesheet" href="./extensions/themes-inline.css" />
+
     <!-- Extensions (external) -->
     <script>
       // Prevent editor from marking files as edited when we set CodeMirror programmatically
@@ -2635,7 +2638,7 @@
 
 
         'theme-one-dark':{name:'One Dark Pro',desc:"Atom's iconic dark theme ported to CodeMirror",cat:'Themes',icon:'🎨',enabled:false,
-          activate:function(){loadCSS('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/one-dark.min.css','cm-t-one-dark');changeTheme('one-dark');},deactivate:function(){changeTheme('vsc');}},
+          activate:function(){changeTheme('one-dark');},deactivate:function(){changeTheme('vsc');}},
         'theme-night-owl':{name:'Night Owl',desc:'A theme for night owls — low contrast, carefully chosen',cat:'Themes',icon:'🎨',enabled:false,
           activate:function(){loadCSS('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/night-owl.min.css','cm-t-night-owl');changeTheme('night-owl');},deactivate:function(){changeTheme('vsc');}},
         'keymap-vim':{name:'Vim',desc:'Full Vim modal editing. Press Esc for normal mode, i to insert.',cat:'Keymaps',icon:'⌨️',enabled:false,
@@ -2682,11 +2685,18 @@
         'indent-rainbow':{name:'Indent Rainbow',desc:'Colorize indentation levels to make nested code easier to read',cat:'Features',icon:'🌈',enabled:false,
           activate:function(){var style=document.createElement('style');style.id='indent-rainbow-style';style.textContent='.CodeMirror-line>.cm-tab:nth-child(1){background:rgba(255,215,0,.08)}.CodeMirror-line>.cm-tab:nth-child(2){background:rgba(0,255,128,.08)}.CodeMirror-line>.cm-tab:nth-child(3){background:rgba(100,149,237,.08)}';document.head.appendChild(style);if(cm)cm.setOption('showInvisibles',true);},
           deactivate:function(){var s=document.getElementById('indent-rainbow-style');if(s)s.remove();}},
-      };
+      });
 
       function changeTheme(name){
         settings.theme=name;
-        if(cm)cm.setOption('theme',name);
+        if(cm){
+          try{
+            cm.setOption('theme',name);
+            cm.refresh();
+          }catch(e){}
+        }
+        // Ensure already-open editor gets updated even if CodeMirror theme CSS arrives later
+        setTimeout(function(){if(cm){try{cm.refresh();}catch(e){}}},50);
         saveSession();
       }
       function toggleExt(id,on){
@@ -2809,11 +2819,15 @@
          INIT — restore session from localStorage
       ══════════════════════════════════════════ */
       (function init(){
-        renderSavedRepos();bindSettings();renderExtPanel();
+        renderSavedRepos();
+        bindSettings();
+        renderExtPanel();
         var session=loadSession();
         if(!session)return;
+
         // Apply saved settings
         if(session.settings){Object.assign(settings,session.settings);}
+
         // Apply extension states
         if(session.extStates){
           Object.keys(session.extStates).forEach(function(id){
@@ -2822,16 +2836,22 @@
             }
           });
         }
+
         // Update settings UI
-        $('set-fontsize').value=settings.fontSize;$('set-fontsize-val').textContent=settings.fontSize+'px';
-        $('set-tabsize').value=settings.tabSize;$('set-font').value=settings.fontFamily;
+        $('set-fontsize').value=settings.fontSize;
+        $('set-fontsize-val').textContent=settings.fontSize+'px';
+        $('set-tabsize').value=settings.tabSize;
+        $('set-font').value=settings.fontFamily;
         renderExtPanel();
+
         // Auto-connect
         if(session.token&&session.repo){
-          $('tok').value=session.token;$('repo').value=session.repo;
+          $('tok').value=session.token;
+          $('repo').value=session.repo;
           connect();
         }
       })();
+    })();
     </script>
 </body>
 </html>
