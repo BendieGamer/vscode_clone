@@ -3,7 +3,7 @@
 const http = require('http');
 const https = require('https');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -54,7 +54,7 @@ http.createServer(function (req, res) {
     proxy.write(Buffer.concat(body));
     proxy.end();
   });
-}).listen(PORT, 'localhost', function () {
+}).listen(PORT, '0.0.0.0', function () {
   console.log('Claude proxy listening on http://localhost:' + PORT + '/claude');
   console.log('Press Ctrl+C to stop.');
 });
