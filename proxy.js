@@ -54,7 +54,7 @@ http.createServer(function (req, res) {
     proxy.write(Buffer.concat(body));
     proxy.end();
   });
-}).listen(PORT, '127.0.0.1', function () {
+}).listen(PORT, 'localhost', function () {
   console.log('Claude proxy listening on http://localhost:' + PORT + '/claude');
   console.log('Press Ctrl+C to stop.');
 });
