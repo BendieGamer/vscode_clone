@@ -1205,6 +1205,63 @@
         font-family: monospace;
         font-size: 12px;
       }
+      /* ── Claude AI Panel ── */
+      #p-claude{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0;}
+      #p-claude.active{display:flex;}
+      #claude-setup{padding:10px 12px;border-bottom:1px solid var(--bdr);flex-shrink:0;display:flex;flex-direction:column;gap:6px;}
+      #claude-key-row{display:flex;gap:6px;}
+      #claude-key,#claude-proxy{background:#3c3c3c;border:1px solid var(--bdr);color:var(--txt);border-radius:3px;padding:5px 8px;font-size:11px;font-family:inherit;outline:none;width:100%;}
+      #claude-key{width:auto;flex:1;}
+      #claude-key:focus,#claude-proxy:focus{border-color:var(--acc);}
+      #claude-key::placeholder,#claude-proxy::placeholder{color:var(--mut);}
+      #claude-key-save{background:var(--acc);border:none;color:#fff;padding:5px 10px;border-radius:3px;cursor:pointer;font-size:11px;font-family:system-ui,sans-serif;flex-shrink:0;}
+      #claude-key-save:hover{background:#4f8fbe;}
+      #claude-setup-hint{font-size:10px;color:var(--mut);font-family:system-ui,sans-serif;line-height:1.6;}
+      #claude-setup-hint code{font-size:10px;color:var(--yel);font-family:'Consolas','Courier New',monospace;}
+      #claude-key-set-bar{display:none;align-items:center;justify-content:space-between;padding:6px 12px;border-bottom:1px solid var(--bdr);flex-shrink:0;}
+      #claude-key-set-bar span{font-size:11px;color:var(--grn);font-family:system-ui,sans-serif;}
+      #claude-key-change{font-size:11px;color:var(--mut);background:none;border:none;cursor:pointer;font-family:system-ui,sans-serif;text-decoration:underline;padding:0;}
+      #claude-key-change:hover{color:var(--txt);}
+      #claude-model-row{padding:4px 12px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--bdr);flex-shrink:0;}
+      #claude-model-row label{font-size:11px;color:var(--mut);font-family:system-ui,sans-serif;}
+      #claude-model{flex:1;background:#3c3c3c;border:1px solid var(--bdr);color:var(--txt);border-radius:3px;padding:3px 5px;font-size:11px;font-family:inherit;outline:none;}
+      #claude-model:focus{border-color:var(--acc);}
+      #claude-msgs{flex:1;overflow-y:auto;padding:8px 0;display:flex;flex-direction:column;gap:2px;min-height:0;}
+      #claude-msgs::-webkit-scrollbar{width:6px;}
+      #claude-msgs::-webkit-scrollbar-thumb{background:#424242;border-radius:3px;}
+      .claude-msg{padding:6px 12px;font-family:system-ui,sans-serif;font-size:12px;line-height:1.55;word-break:break-word;}
+      .claude-msg.user{background:rgba(86,156,214,0.1);border-left:2px solid var(--acc);color:var(--txt);}
+      .claude-msg.assistant{color:var(--txt);border-left:2px solid transparent;}
+      .claude-role{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--mut);margin-bottom:3px;}
+      .claude-msg.user .claude-role{color:var(--acc);}
+      .claude-msg.assistant .claude-role{color:var(--grn);}
+      .claude-msg pre{background:#2d2d2d;border:1px solid var(--bdr);border-radius:4px;padding:8px;margin:6px 0 4px;overflow-x:auto;font-family:'Consolas','Courier New',monospace;font-size:11px;line-height:1.5;color:#d4d4d4;white-space:pre;}
+      .claude-msg code{font-family:'Consolas','Courier New',monospace;font-size:11px;background:#2d2d2d;padding:1px 4px;border-radius:3px;color:#ce9178;}
+      .claude-msg pre code{background:none;padding:0;color:inherit;}
+      .claude-code-block{margin:4px 0;}
+      .claude-code-actions{display:flex;align-items:center;gap:6px;margin-top:3px;flex-wrap:wrap;}
+      .claude-apply-btn{display:inline-flex;align-items:center;gap:4px;background:#388a34;border:none;color:#fff;padding:3px 8px;border-radius:3px;cursor:pointer;font-size:11px;font-family:system-ui,sans-serif;margin-top:2px;}
+      .claude-apply-btn:hover{background:#3fa03a;}
+      .claude-apply-btn:disabled{opacity:0.5;cursor:not-allowed;}
+      .claude-copy-btn{display:inline-flex;align-items:center;gap:4px;background:#3c3c3c;border:1px solid var(--bdr);color:var(--mut);padding:2px 7px;border-radius:3px;cursor:pointer;font-size:10px;font-family:system-ui,sans-serif;margin-top:2px;}
+      .claude-copy-btn:hover{color:var(--txt);border-color:#666;}
+      .claude-lang-tag{font-size:10px;color:var(--mut);font-family:system-ui,sans-serif;margin-left:auto;margin-top:2px;}
+      #claude-typing{padding:6px 12px;display:none;align-items:center;gap:6px;flex-shrink:0;}
+      #claude-typing span{font-size:11px;color:var(--mut);font-family:system-ui,sans-serif;}
+      @keyframes spin{to{transform:rotate(360deg);}}
+      .claude-spin{animation:spin 1s linear infinite;display:block;}
+      #claude-input-area{padding:8px;border-top:1px solid var(--bdr);display:flex;flex-direction:column;gap:6px;flex-shrink:0;}
+      #claude-ctx-bar{font-size:10px;color:var(--mut);font-family:system-ui,sans-serif;padding:0 2px;min-height:14px;}
+      #claude-ctx-bar.has-sel{color:var(--yel);}
+      #claude-textarea{background:#3c3c3c;border:1px solid var(--bdr);color:var(--txt);border-radius:3px;padding:7px 9px;font-size:12px;font-family:system-ui,sans-serif;outline:none;resize:none;height:72px;line-height:1.45;width:100%;}
+      #claude-textarea:focus{border-color:var(--acc);}
+      #claude-textarea::placeholder{color:var(--mut);}
+      #claude-send-row{display:flex;justify-content:space-between;align-items:center;gap:6px;}
+      #claude-send{background:var(--acc);border:none;color:#fff;padding:6px 14px;border-radius:3px;cursor:pointer;font-size:12px;font-family:system-ui,sans-serif;display:flex;align-items:center;gap:5px;}
+      #claude-send:hover{background:#4f8fbe;}
+      #claude-send:disabled{opacity:0.5;cursor:not-allowed;}
+      #claude-clear{background:none;border:1px solid #555;color:var(--mut);padding:5px 10px;border-radius:3px;cursor:pointer;font-size:11px;font-family:system-ui,sans-serif;}
+      #claude-clear:hover{border-color:var(--red);color:var(--red);}
     </style>
   </head>
   <body>
@@ -1288,6 +1345,14 @@
                 fill="currentColor"
                 stroke="none"
               />
+            </svg>
+          </button>
+          <button class="abtn" id="a-claude" title="Claude AI (Ctrl+Shift+A)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+              <circle cx="9" cy="10" r=".8" fill="currentColor" stroke="none"/>
+              <circle cx="12" cy="10" r=".8" fill="currentColor" stroke="none"/>
+              <circle cx="15" cy="10" r=".8" fill="currentColor" stroke="none"/>
             </svg>
           </button>
           <div class="aspace"></div>
@@ -1576,6 +1641,47 @@
                   GitHub Code Editor v1.5.0<br />Powered by CodeMirror 5<br />Extensions:
                   JSHint · CSSLint · Prettier<br />© 2025 — Open source
                 </div>
+              </div>
+            </div>
+          </div>
+          <!-- Claude AI panel -->
+          <div class="panel" id="p-claude">
+            <div id="claude-setup">
+              <div id="claude-setup-hint">Enter your Anthropic API key and the local proxy URL.<br>Run the proxy with: <code>node proxy.js</code></div>
+              <div id="claude-key-row">
+                <input id="claude-key" type="password" placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false"/>
+                <button id="claude-key-save">Save</button>
+              </div>
+              <input id="claude-proxy" type="text" value="http://localhost:3001/claude" placeholder="Proxy URL"/>
+            </div>
+            <div id="claude-key-set-bar">
+              <span>&#10003; API key saved</span>
+              <button id="claude-key-change">Change</button>
+            </div>
+            <div id="claude-model-row">
+              <label for="claude-model">Model</label>
+              <select id="claude-model">
+                <option value="claude-sonnet-4-6" selected>claude-sonnet-4-6</option>
+                <option value="claude-opus-4-5">claude-opus-4-5</option>
+                <option value="claude-haiku-4-5-20251001">claude-haiku-4-5</option>
+              </select>
+            </div>
+            <div id="claude-msgs"></div>
+            <div id="claude-typing">
+              <svg class="claude-spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+              <span>Claude is thinking&#8230;</span>
+            </div>
+            <div id="claude-input-area">
+              <div id="claude-ctx-bar">No file open</div>
+              <textarea id="claude-textarea" placeholder="Ask Claude about your code&#8230;"></textarea>
+              <div id="claude-send-row">
+                <button id="claude-clear">Clear</button>
+                <button id="claude-send">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  Send
+                </button>
               </div>
             </div>
           </div>
@@ -2440,7 +2546,7 @@
           if(settings.minimap)clearTimeout(minimapTimer),minimapTimer=setTimeout(drawMinimap,400);
         });
 
-        cm.on('cursorActivity',function(){var c=cm.getCursor();$('sb-pos').textContent='Ln '+(c.line+1)+', Col '+(c.ch+1);});
+        cm.on('cursorActivity',function(){var c=cm.getCursor();$('sb-pos').textContent='Ln '+(c.line+1)+', Col '+(c.ch+1);if(st.sbView==='claude')updateClaudeCtxBar();});
         applySettings();
       }
       var todoTimer=null,colorTimer=null;
@@ -2611,6 +2717,7 @@
         if(!cm)initCM();
         if(loading){cm.setOption('lint',false);cm.setValue('');return;}
         if(tab.content!==null){loadIntoEditor(tab);$('sb-pi').style.display='flex';}
+        if(st.sbView==='claude')updateClaudeCtxBar();
       }
       function renderBc(path){
         var segs=path?path.split('/'):[],bc=$('bc');bc.innerHTML='';
@@ -2763,9 +2870,9 @@
          SIDEBAR PANEL SWITCHING
       ══════════════════════════════════════════ */
       function switchPanel(view){
-        var panels={explorer:'p-exp',sc:'p-sc',extensions:'p-ext',settings:'p-set'};
-        var titles={explorer:'Explorer',sc:'Source Control',extensions:'Extensions',settings:'Settings'};
-        var btns={explorer:'a-exp',sc:'a-sc',extensions:'a-ext',settings:'a-set'};
+        var panels={explorer:'p-exp',sc:'p-sc',extensions:'p-ext',settings:'p-set',claude:'p-claude'};
+        var titles={explorer:'Explorer',sc:'Source Control',extensions:'Extensions',settings:'Settings',claude:'Claude AI'};
+        var btns={explorer:'a-exp',sc:'a-sc',extensions:'a-ext',settings:'a-set',claude:'a-claude'};
         var toolbtns=['btn-nf','btn-nd','btn-rf','btn-col'];
         document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
         document.querySelectorAll('.abtn').forEach(function(b){b.classList.remove('on');});
@@ -2776,6 +2883,253 @@
         var btn=btns[view];if(btn&&$(btn))$(btn).classList.add('on');
         toolbtns.forEach(function(id){$(id).style.display=view==='explorer'&&st.token?'flex':'none';});
         if(view==='extensions')renderExtPanel();
+        if(view==='claude')initClaudePanel();
+      }
+
+      /* ══════════════════════════════════════════
+         CLAUDE AI PANEL
+      ══════════════════════════════════════════ */
+      var claudeHistory=[];
+      var claudeStreaming=false;
+      var CLAUDE_KEY_STORAGE='gce-claude-key';
+      var CLAUDE_PROXY_STORAGE='gce-claude-proxy';
+
+      function initClaudePanel(){
+        var key=localStorage.getItem(CLAUDE_KEY_STORAGE)||'';
+        var proxy=localStorage.getItem(CLAUDE_PROXY_STORAGE)||'http://localhost:3001/claude';
+        if(key){
+          $('claude-setup').style.display='none';
+          $('claude-key-set-bar').style.display='flex';
+        }else{
+          $('claude-setup').style.display='flex';
+          $('claude-key-set-bar').style.display='none';
+          $('claude-proxy').value=proxy;
+        }
+        updateClaudeCtxBar();
+      }
+
+      function updateClaudeCtxBar(){
+        var bar=$('claude-ctx-bar');
+        if(!st.activeTab||!cm){bar.textContent='No file open';bar.className='';return;}
+        var tab=st.tabs.find(function(t){return t.path===st.activeTab;});
+        var name=tab?tab.name:'';
+        if(cm.somethingSelected()){
+          var lines=cm.getSelection().split('\n').length;
+          bar.textContent='Selection: '+lines+' line'+(lines!==1?'s':'')+' from '+name;
+          bar.className='has-sel';
+        }else{
+          bar.textContent='Full file: '+name+' ('+cm.lineCount()+' lines)';
+          bar.className='';
+        }
+      }
+
+      function parseClaudeContent(text){
+        var parts=[];
+        var fence=/```(\w*)\n([\s\S]*?)```/g;
+        var last=0,m;
+        while((m=fence.exec(text))!==null){
+          if(m.index>last)parts.push({type:'text',text:text.slice(last,m.index)});
+          parts.push({type:'code',lang:m[1]||'',code:m[2]});
+          last=m.index+m[0].length;
+        }
+        if(last<text.length)parts.push({type:'text',text:text.slice(last)});
+        return parts;
+      }
+
+      function buildMsgDom(wrap,textAccum,selFrom,selTo,isFinal){
+        // Remove all children after the role label
+        while(wrap.children.length>1)wrap.removeChild(wrap.lastChild);
+        var parts=parseClaudeContent(textAccum);
+        parts.forEach(function(part){
+          if(part.type==='text'){
+            if(!part.text.trim())return;
+            var d=document.createElement('div');
+            d.textContent=part.text;
+            wrap.appendChild(d);
+          }else{
+            var cb=document.createElement('div');cb.className='claude-code-block';
+            var pre=document.createElement('pre');
+            var code=document.createElement('code');
+            code.textContent=part.code;
+            pre.appendChild(code);cb.appendChild(pre);
+            var acts=document.createElement('div');acts.className='claude-code-actions';
+            if(isFinal){
+              var applyBtn=document.createElement('button');
+              applyBtn.className='claude-apply-btn';
+              applyBtn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Apply';
+              applyBtn.title=selFrom?'Replace selection':'Replace full file';
+              (function(c,sf,st2){
+                applyBtn.addEventListener('click',function(){
+                  claudeApplyCode(c,sf,st2);
+                  applyBtn.disabled=true;applyBtn.textContent='Applied';
+                });
+              })(part.code,selFrom,selTo);
+              acts.appendChild(applyBtn);
+            }
+            var copyBtn=document.createElement('button');
+            copyBtn.className='claude-copy-btn';
+            copyBtn.textContent='Copy';
+            (function(c){
+              copyBtn.addEventListener('click',function(){
+                navigator.clipboard.writeText(c).then(function(){
+                  copyBtn.textContent='Copied!';
+                  setTimeout(function(){copyBtn.textContent='Copy';},1500);
+                });
+              });
+            })(part.code);
+            acts.appendChild(copyBtn);
+            if(part.lang){
+              var lt=document.createElement('span');
+              lt.className='claude-lang-tag';
+              lt.textContent=part.lang;
+              acts.appendChild(lt);
+            }
+            cb.appendChild(acts);
+            wrap.appendChild(cb);
+          }
+        });
+        $('claude-msgs').scrollTop=$('claude-msgs').scrollHeight;
+      }
+
+      function renderClaudeUserMsg(text){
+        var wrap=document.createElement('div');
+        wrap.className='claude-msg user';
+        var lbl=document.createElement('div');lbl.className='claude-role';lbl.textContent='You';
+        wrap.appendChild(lbl);
+        var d=document.createElement('div');d.textContent=text;wrap.appendChild(d);
+        $('claude-msgs').appendChild(wrap);
+        $('claude-msgs').scrollTop=$('claude-msgs').scrollHeight;
+      }
+
+      function renderClaudeAssistantShell(selFrom,selTo){
+        var wrap=document.createElement('div');
+        wrap.className='claude-msg assistant';
+        var lbl=document.createElement('div');lbl.className='claude-role';lbl.textContent='Claude';
+        wrap.appendChild(lbl);
+        $('claude-msgs').appendChild(wrap);
+        return wrap;
+      }
+
+      function renderClaudeError(msg){
+        var wrap=document.createElement('div');
+        wrap.className='claude-msg assistant';
+        wrap.style.color='var(--red)';
+        var lbl=document.createElement('div');lbl.className='claude-role';lbl.textContent='Claude';
+        wrap.appendChild(lbl);
+        var d=document.createElement('div');d.textContent=msg;wrap.appendChild(d);
+        $('claude-msgs').appendChild(wrap);
+        $('claude-msgs').scrollTop=$('claude-msgs').scrollHeight;
+      }
+
+      function claudeApplyCode(code,selFrom,selTo){
+        if(!cm)return;
+        if(selFrom&&selTo){
+          cm.getDoc().replaceRange(code,selFrom,selTo);
+        }else{
+          window.__GCE_SILENT__=true;
+          try{cm.setValue(code);}
+          finally{setTimeout(function(){window.__GCE_SILENT__=false;},0);}
+          var tab=st.tabs.find(function(t){return t.path===st.activeTab;});
+          if(tab){
+            tab.content=code;
+            markPending(tab.path,code,tab.sha,tab.name,tab.ext,tab.originalContent===null);
+            renderTabs();updateTreePendingState();
+          }
+        }
+        setSt('Applied Claude suggestion');
+      }
+
+      async function claudeSend(){
+        if(claudeStreaming)return;
+        var key=localStorage.getItem(CLAUDE_KEY_STORAGE);
+        var proxy=localStorage.getItem(CLAUDE_PROXY_STORAGE)||'http://localhost:3001/claude';
+        if(!key){alert('Set your Anthropic API key in the Claude panel first.');initClaudePanel();return;}
+        var userText=$('claude-textarea').value.trim();
+        if(!userText)return;
+
+        var tab=st.tabs.find(function(t){return t.path===st.activeTab;});
+        var filename=tab?tab.name:'untitled';
+        var hasSel=cm&&cm.somethingSelected();
+        var selFrom=hasSel?cm.getCursor('from'):null;
+        var selTo=hasSel?cm.getCursor('to'):null;
+        var codeCtx=cm?(hasSel?cm.getSelection():cm.getValue()):'';
+        var ctxLabel=hasSel?'[Selected code from '+filename+']':'[Full file: '+filename+']';
+        var fullUserContent=userText+'\n\n'+ctxLabel+'\n```\n'+codeCtx+'\n```';
+
+        claudeHistory.push({role:'user',content:fullUserContent});
+        renderClaudeUserMsg(userText);
+        $('claude-textarea').value='';
+        $('claude-send').disabled=true;
+        claudeStreaming=true;
+        $('claude-typing').style.display='flex';
+
+        var model=$('claude-model').value||'claude-sonnet-4-6';
+        var systemPrompt='You are an expert coding assistant embedded in a browser-based code editor. '
+          +'The user is editing a file named "'+filename+'". '
+          +'When asked to modify code, return ONLY the modified code in a fenced code block with the language identifier. '
+          +'Do not explain changes unless explicitly asked. '
+          +(hasSel
+            ?'The user provided a SELECTION — operate only on that selection and return just the replacement for it.'
+            :'The user provided the FULL FILE — you may edit any part and return the entire file.');
+
+        var messages=claudeHistory.map(function(m){return{role:m.role,content:m.content};});
+        var msgEl=renderClaudeAssistantShell(selFrom,selTo);
+        var textAccum='';
+
+        try{
+          var res=await fetch(proxy,{
+            method:'POST',
+            headers:{
+              'Content-Type':'application/json',
+              'x-api-key':key,
+              'anthropic-version':'2023-06-01'
+            },
+            body:JSON.stringify({
+              model:model,
+              max_tokens:4096,
+              stream:true,
+              system:systemPrompt,
+              messages:messages
+            })
+          });
+          if(!res.ok){
+            var errBody=await res.text();
+            throw new Error('HTTP '+res.status+': '+errBody);
+          }
+          var reader=res.body.getReader();
+          var decoder=new TextDecoder();
+          var buf='';
+          while(true){
+            var chunk=await reader.read();
+            if(chunk.done)break;
+            buf+=decoder.decode(chunk.value,{stream:true});
+            var lines=buf.split('\n');
+            buf=lines.pop();
+            for(var i=0;i<lines.length;i++){
+              var line=lines[i].trim();
+              if(!line||!line.startsWith('data:'))continue;
+              var raw=line.slice(5).trim();
+              if(raw==='[DONE]')break;
+              try{
+                var evt=JSON.parse(raw);
+                if(evt.type==='content_block_delta'&&evt.delta&&evt.delta.type==='text_delta'){
+                  textAccum+=evt.delta.text;
+                  buildMsgDom(msgEl,textAccum,selFrom,selTo,false);
+                }
+              }catch(e2){}
+            }
+          }
+          buildMsgDom(msgEl,textAccum,selFrom,selTo,true);
+          claudeHistory.push({role:'assistant',content:textAccum});
+        }catch(err){
+          msgEl.remove();
+          renderClaudeError('Error: '+err.message);
+          claudeHistory.push({role:'assistant',content:'Error: '+err.message});
+        }finally{
+          claudeStreaming=false;
+          $('claude-send').disabled=false;
+          $('claude-typing').style.display='none';
+        }
       }
 
       /* ══════════════════════════════════════════
@@ -2788,7 +3142,30 @@
       $('a-sc').addEventListener('click',function(){switchPanel('sc');});
       $('a-ext').addEventListener('click',function(){switchPanel('extensions');});
       $('a-set').addEventListener('click',function(){switchPanel('settings');});
+      $('a-claude').addEventListener('click',function(){switchPanel('claude');});
       $('a-logout').addEventListener('click',logout);
+      $('claude-key-save').addEventListener('click',function(){
+        var k=$('claude-key').value.trim();
+        var p=$('claude-proxy').value.trim()||'http://localhost:3001/claude';
+        if(!k){alert('Please enter a valid API key.');return;}
+        localStorage.setItem(CLAUDE_KEY_STORAGE,k);
+        localStorage.setItem(CLAUDE_PROXY_STORAGE,p);
+        $('claude-key').value='';
+        initClaudePanel();
+      });
+      $('claude-key-change').addEventListener('click',function(){
+        localStorage.removeItem(CLAUDE_KEY_STORAGE);
+        initClaudePanel();
+      });
+      $('claude-send').addEventListener('click',claudeSend);
+      $('claude-textarea').addEventListener('keydown',function(e){
+        if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();claudeSend();}
+      });
+      $('claude-clear').addEventListener('click',function(){
+        if(claudeHistory.length&&!confirm('Clear conversation history?'))return;
+        claudeHistory=[];
+        $('claude-msgs').innerHTML='';
+      });
       $('btn-nf').addEventListener('click',function(){cxtx={path:'',type:'',sha:'',name:''};startInlineNew('file');});
       $('btn-nd').addEventListener('click',function(){cxtx={path:'',type:'',sha:'',name:''};startInlineNew('dir');});
       $('btn-rf').addEventListener('click',function(){dirState={};loadTree('',$('ftree'));});
@@ -2807,6 +3184,7 @@
       document.addEventListener('keydown',function(e){
         var c=e.ctrlKey||e.metaKey;
         if(c&&e.shiftKey&&e.key==='E'){e.preventDefault();switchPanel('explorer');}
+        if(c&&e.shiftKey&&e.key==='A'){e.preventDefault();switchPanel('claude');}
         if(c&&e.key==='b'){e.preventDefault();switchPanel(st.sbView||'explorer');}
         if(e.key==='Escape')hideCtx();
       });
