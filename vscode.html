@@ -3099,7 +3099,8 @@
           var reader=res.body.getReader();
           var decoder=new TextDecoder();
           var buf='';
-          while(true){
+          var done=false;
+          while(!done){
             var chunk=await reader.read();
             if(chunk.done)break;
             buf+=decoder.decode(chunk.value,{stream:true});
@@ -3109,7 +3110,7 @@
               var line=lines[i].trim();
               if(!line||!line.startsWith('data:'))continue;
               var raw=line.slice(5).trim();
-              if(raw==='[DONE]')break;
+              if(raw==='[DONE]'){done=true;break;}
               try{
                 var evt=JSON.parse(raw);
                 if(evt.type==='content_block_delta'&&evt.delta&&evt.delta.type==='text_delta'){
